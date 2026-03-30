@@ -2,4 +2,7 @@ node_modules/
 .env
 *.log
 vendor/
+*.cache
+.idea/
+.vscode/
 travail-groupe.md
