@@ -2,7 +2,12 @@
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-session_start();
+session_start([
+    'use_only_cookies' => 1,
+    'use_strict_mode' => 1,
+    'cookie_httponly' => 1,
+    'cookie_samesite' => 'Lax',
+]);
 
 require_once __DIR__ . '/../config/config.php';
 

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Core\Auth;
 use App\Core\Controller;
 use App\Repositories\UserRepository;
 
@@ -37,7 +38,9 @@ class AuthController extends Controller
                 'email' => $user['email'],
                 'role' => $user['role'],
             ];
-            session_regenerate_id(true);
+            if (session_status() === PHP_SESSION_ACTIVE) {
+                session_regenerate_id(true);
+            }
             $_SESSION['flash_success'] = 'Connexion reussie.';
             $this->redirect('home/index');
         }
@@ -91,7 +94,6 @@ class AuthController extends Controller
     public function logout(): void
     {
         Auth::logout();
-        $_SESSION['flash_success'] = 'Vous etes deconnecte.';
         $this->redirect('home/index');
     }
 }

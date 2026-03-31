@@ -68,9 +68,40 @@ class Auth
         self::redirect($redirect);
     }
 
-    public static function logout(): void
+    public static function logout(string $flashMessage = 'Vous etes deconnecte.'): void
     {
+        $cookieParams = session_get_cookie_params();
+
         unset($_SESSION['user']);
+
+        $_SESSION = [];
+
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            if (ini_get('session.use_cookies')) {
+                setcookie(
+                    session_name(),
+                    '',
+                    time() - 42000,
+                    $cookieParams['path'],
+                    $cookieParams['domain'],
+                    (bool) $cookieParams['secure'],
+                    (bool) $cookieParams['httponly']
+                );
+            }
+
+            session_destroy();
+        }
+
+        if (session_status() !== PHP_SESSION_ACTIVE && !headers_sent()) {
+            session_start([
+                'use_only_cookies' => 1,
+                'use_strict_mode' => 1,
+                'cookie_httponly' => 1,
+                'cookie_samesite' => 'Lax',
+            ]);
+        }
+
+        $_SESSION['flash_success'] = $flashMessage;
     }
 
     private static function redirect(string $path): void
