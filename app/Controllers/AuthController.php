@@ -37,6 +37,7 @@ class AuthController extends Controller
                 'email' => $user['email'],
                 'role' => $user['role'],
             ];
+            session_regenerate_id(true);
             $_SESSION['flash_success'] = 'Connexion reussie.';
             $this->redirect('home/index');
         }
@@ -89,7 +90,7 @@ class AuthController extends Controller
 
     public function logout(): void
     {
-        unset($_SESSION['user']);
+        Auth::logout();
         $_SESSION['flash_success'] = 'Vous etes deconnecte.';
         $this->redirect('home/index');
     }
