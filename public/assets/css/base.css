@@ -1,0 +1,11 @@
+body {
+    min-height: 100vh;
+}
+
+.hero {
+    border: 1px solid #e9ecef;
+}
+
+.navbar-brand {
+    letter-spacing: 0.4px;
+}
