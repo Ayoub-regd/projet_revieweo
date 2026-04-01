@@ -3,6 +3,26 @@
 Revieweo est une plateforme de critiques de films realisee en PHP 8.2, MySQL/MariaDB, Bootstrap 5 et JavaScript.
 Le projet utilise un mini MVC maison avec un point d'entree unique, des repositories, des services, des vues Bootstrap et un systeme de roles.
 
+## Contexte
+
+Le projet Revieweo a ete realise dans le cadre du module web IPSSI afin de creer une plateforme simple de consultation et de publication de critiques de films.
+Le sujet a ete volontairement garde lisible pour pouvoir montrer clairement la separation entre l'interface, la logique metier, la base de donnees et les droits d'acces.
+
+## Objectif
+
+- Permettre a un visiteur de consulter des critiques publiques
+- Permettre a un utilisateur connecte de s'authentifier et de liker une critique
+- Permettre a un compte critique de creer, modifier et supprimer ses propres critiques
+- Permettre a un administrateur de moderer les contenus et de gerer les roles
+
+## Problematique traitee
+
+- Organiser le projet avec une architecture mini MVC simple et lisible
+- Separer les responsabilites entre vues, controleurs, repositories et services
+- Gerer des roles differents sans complexifier inutilement le code
+- Proteger les actions sensibles et les zones privees
+- Ajouter une interaction utilisateur simple avec les likes en AJAX
+
 ## Fonctionnalites
 
 - Accueil public avec mise en avant de critiques recentes
@@ -36,6 +56,14 @@ Faire pointer le serveur web vers le dossier `public/`.
 - Document root : `.../travaille_a_rendre-Environnement_de_production_lier_a_git/public`
 - Le front controller reste `public/index.php`
 
+## Pre-requis
+
+- PHP 8.2.x
+- Apache
+- MySQL ou MariaDB
+- Extension PHP `pdo_mysql` active
+- Base `revieweo` creee avant le lancement
+
 ## Installation
 
 1. Copier ou cloner le projet dans votre environnement local.
@@ -63,6 +91,11 @@ Mot de passe commun pour les comptes de demo : `revieweo123`
 - Tester l'espace critique avec un compte `critique`
 - Tester l'espace admin avec un compte `admin`
 
+## Donnees de demo
+
+Le fichier `database/seed.sql` contient des comptes de demonstration et des critiques d'exemple.
+Utiliser le mot de passe commun `revieweo123` pour les comptes de test.
+
 ## Structure du projet
 
 - `public/` : front controller et assets web
@@ -80,6 +113,12 @@ Mot de passe commun pour les comptes de demo : `revieweo123`
 - Ayoub : cadrage, socle technique, securite, documentation, preuves et rendu
 - Victor : pages publiques, interface, likes AJAX et administration visuelle
 - Ilyass : base de donnees, repositories, services et logique metier
+
+## Limites connues
+
+- Le README ne remplace pas le rapport ni la soutenance
+- Le projet reste volontairement simple pour rester defendable a l'oral
+- Les noms de certains fichiers techniques ont ete normalises au fil des commits
 
 ## Notes techniques
 
