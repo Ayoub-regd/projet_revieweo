@@ -9,7 +9,7 @@ use App\Repositories\LikeRepository;
 use App\Repositories\ReviewRepository;
 
 /**
- * Controleur public des critiques (liste + detail)
+ * Controleur public des critiques (liste + detail), meme idee que ArticleController en TP.
  */
 class ReviewController extends Controller
 {
