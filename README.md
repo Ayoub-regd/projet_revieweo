@@ -7,6 +7,7 @@ Le projet utilise un mini MVC maison avec un point d'entree unique, des reposito
 
 Le projet Revieweo a ete realise dans le cadre du module web IPSSI afin de creer une plateforme simple de consultation et de publication de critiques de films.
 Le sujet a ete volontairement garde lisible pour pouvoir montrer clairement la separation entre l'interface, la logique metier, la base de donnees et les droits d'acces.
+Le projet repond au sujet Revieweo avec trois roles distincts : utilisateur, critique et administrateur.
 
 ## Objectif
 
@@ -35,10 +36,13 @@ Le sujet a ete volontairement garde lisible pour pouvoir montrer clairement la s
 
 ## Stack technique
 
+- HTML5
+- CSS3
 - PHP 8.2.12
 - MySQL / MariaDB
 - Bootstrap 5.3
 - JavaScript natif avec `fetch()`
+- Git / GitHub
 - Architecture mini MVC
 
 ## Demarrage
