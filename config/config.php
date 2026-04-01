@@ -9,5 +9,5 @@ define('DB_PORT', '3306');
 // Configuration application
 define('APP_NAME', 'Revieweo');
 
-// URL de base du projet (adaptable selon votre dossier local)
-define('BASE_URL', '/');
+// URL de base du projet dans XAMPP quand il est servi depuis /revieweo-app/public
+define('BASE_URL', '/revieweo-app/public');
