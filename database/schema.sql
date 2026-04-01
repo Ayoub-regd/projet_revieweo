@@ -44,3 +44,12 @@ CREATE TABLE IF NOT EXISTS likes (
     CONSTRAINT fk_likes_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     CONSTRAINT fk_likes_review FOREIGN KEY (review_id) REFERENCES reviews(id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
+
+-- Categories de demo (films), pour les formulaires cases a cocher
+INSERT IGNORE INTO categories (name) VALUES
+    ('Action'),
+    ('Comedie'),
+    ('Science-fiction'),
+    ('Drame'),
+    ('Thriller'),
+    ('Animation');

@@ -61,6 +61,32 @@ class ReviewService
         return true;
     }
 
+    /**
+     * Auteur : update par proprietaire. Admin : update direct (comme la moderation en salle).
+     */
+    public function updateReviewWithCategoriesForActor(
+        int $reviewId,
+        int $actorId,
+        string $actorRole,
+        string $title,
+        string $content,
+        int $rating,
+        array $categoryIds
+    ): bool {
+        if ($actorRole === 'admin') {
+            $updated = $this->reviews->updateById($reviewId, $title, $content, $rating);
+        } else {
+            $updated = $this->reviews->updateByOwner($reviewId, $actorId, $title, $content, $rating);
+        }
+
+        if (!$updated) {
+            return false;
+        }
+
+        $this->categories->syncForReview($reviewId, $categoryIds);
+        return true;
+    }
+
     public function deleteReview(int $reviewId, int $userId, string $role): bool
     {
         if ($role === 'admin') {

@@ -22,6 +22,29 @@ class UserRepository
         return $user ?: null;
     }
 
+    public function findById(int $id): ?array
+    {
+        $stmt = $this->pdo->prepare('SELECT * FROM users WHERE id = :id LIMIT 1');
+        $stmt->execute(['id' => $id]);
+        $user = $stmt->fetch();
+        return $user ?: null;
+    }
+
+    /** Liste pour l'admin (pas de mot de passe affiche dans la vue). */
+    public function findAll(): array
+    {
+        $stmt = $this->pdo->query(
+            'SELECT id, username, email, role, created_at FROM users ORDER BY id ASC'
+        );
+        return $stmt->fetchAll();
+    }
+
+    public function updateRole(int $id, string $role): bool
+    {
+        $stmt = $this->pdo->prepare('UPDATE users SET role = :role WHERE id = :id');
+        return $stmt->execute(['role' => $role, 'id' => $id]);
+    }
+
     public function create(string $username, string $email, string $passwordHash, string $role = 'user'): bool
     {
         $stmt = $this->pdo->prepare(
