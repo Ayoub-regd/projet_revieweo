@@ -2,6 +2,12 @@
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+
+$sessionPath = sys_get_temp_dir();
+if (is_dir($sessionPath) && is_writable($sessionPath)) {
+    session_save_path($sessionPath);
+}
+
 session_start([
     'use_only_cookies' => 1,
     'use_strict_mode' => 1,
