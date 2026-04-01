@@ -1,6 +1,7 @@
 <?php
 /** @var array $featuredRows */
 $user = $_SESSION['user'] ?? null;
+$featuredRows = $featuredRows ?? [];
 ?>
 <section class="hero p-4 p-md-5 rounded-4 shadow-sm bg-white mb-4">
     <h1 class="display-6 fw-bold mb-3">Bienvenue sur Revieweo</h1>
